@@ -13,5 +13,5 @@ void main() {
   print('Idade: $idade ${idade > 18 ? 'Maior de idade' : 'Menor de idade'}');
   print('Status: ${ativo == true ? 'Ativo' : 'Inativo'}');
   print('Peso: $peso');
-  print('Nacionalidade: ${nacionalidade == null ? 'Não informada' : '$nacionalidade'}');
+  print('Nacionalidade: ${nacionalidade ?? 'Não informada'}');
 }
