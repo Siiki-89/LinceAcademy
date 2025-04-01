@@ -1,7 +1,7 @@
 import 'dart:math';
 
 void main(){
-  //Inicializando as variáveis
+  //Inicializando variável
   final random = Random();
 
   //Obtendo lista aleatoria
