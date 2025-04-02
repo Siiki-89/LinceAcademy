@@ -23,9 +23,5 @@ int funcaoA (int Function (int) funcao){
 }
 
 //Funções A e B
-int funcaoB (int numero){
-  return numero * 4;
-}
-int funcaoC (int numero){
-  return numero * 2;
-}
+int funcaoB (int numero) => numero * 4;
+int funcaoC (int numero) => numero * 2;

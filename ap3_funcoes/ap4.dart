@@ -5,7 +5,7 @@ void main(){
   final random = Random();
   List<int> decimal = List.generate(15, (index)=> random.nextInt(5000));
 
-  //Chama metodo imprimir dados
+  //Chama função imprimir dados
   imprimirDados(decimal);
 }
 
