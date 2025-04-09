@@ -1,9 +1,13 @@
+//Criando classe abstrata 
 abstract class Arquivo{
   void abrir();
 }
+//Criando classe 'ArquivoTexto'
 class ArquivoTexto implements Arquivo{
+  //Inicializando atributos
   final String nome;
 
+  //Forçando entrada dos atribudos ao instanciar e validando
   ArquivoTexto(this.nome);
 
   @override
@@ -21,16 +25,21 @@ class ArquivoTexto implements Arquivo{
 
 void main(){
   try {
+    //Inicializando variavel
     String arquivoNome = "";
 
-    if(arquivoNome == null){
+    //Verifica se está vazia
+    if(arquivoNome.isEmpty){
       throw Exception('Entrada invalida. Digite um nome valido.');
     }
     
     ArquivoTexto arquivo = ArquivoTexto(arquivoNome);
+
+    //Tenta abrir o arquivo
     try {
       arquivo.abrir();
     } catch (e){
+      //Relança qualquer exceção
       rethrow;
     }
   } catch (e){
