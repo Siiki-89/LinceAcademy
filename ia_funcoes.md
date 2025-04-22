@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Funções em Dart - Boas Práticas e Conceitos
 
 ## Quais cuidados devo ter ao criar funções em Dart?
