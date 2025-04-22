@@ -1,167 +1,154 @@
-• O que acontece se eu comparar valores de tipos diferentes usando operadores relacionais em Dart?
-Se os tipos forem incompatíveis, Dart lança um erro em tempo de execução. Por exemplo:
+# Operadores e Condições em Dart
 
-dart
-Copiar
-Editar
-print(5 < '5'); // erro
-Evite isso com verificações de tipo antes de comparar.
+## O que acontece se eu comparar valores de tipos diferentes usando operadores relacionais em Dart?
 
-• Qual a diferença entre os operadores de divisão / e ~/?
-/ → divisão real, retorna double.
+Dart pode lançar erro em tempo de execução ao comparar tipos incompatíveis com operadores relacionais (`<`, `>`, `<=`, `>=`). É importante garantir que os tipos sejam compatíveis antes da comparação.
 
-~/ → divisão inteira, retorna int.
+---
 
-dart
-Copiar
-Editar
-print(5 / 2);  // 2.5
-print(5 ~/ 2); // 2
-• Como verifico se uma variável é de um determinado tipo em Dart?
-Use o operador is:
+## Qual a diferença entre os operadores de divisão `/` e `~/`?
 
-dart
-Copiar
-Editar
-var x = 10;
-print(x is int); // true
-print(x is String); // false
-• Qual a função do operador ? em testes de tipo?
-É usado com is para negar o tipo:
+- `/`: retorna um `double` com o resultado da divisão.
+- `~/`: retorna um `int`, descartando a parte decimal (divisão inteira).
 
-dart
-Copiar
-Editar
-print(x is! String); // true → "x não é String"
-• Quando usar os operadores de valores opcionais e requeridos em uma função Dart?
-Use required para garantir que parâmetros nomeados sejam obrigatórios.
+---
 
-Use valores opcionais quando o parâmetro não for essencial.
+## Como verifico se uma variável é de um determinado tipo em Dart?
 
-dart
-Copiar
-Editar
-void exemplo({required String nome, int idade = 18}) { ... }
-• Quais são os operadores de atribuição compostos e como eles funcionam?
-Eles combinam operação e atribuição:
+Use o operador `is`:
 
-dart
-Copiar
-Editar
-a += 2;  // a = a + 2
-a -= 1;  // a = a - 1
-a *= 3;  // a = a * 3
-a ~/= 2; // a = a ~/ 2
-a /= 2;  // a = a / 2
-a %= 3;  // a = a % 3
-a ??= 5; // se a for null, atribui 5
-• Como uso os operadores && e || para combinar condições?
-&&: E lógico → só é true se ambas as condições forem verdadeiras.
-
-||: OU lógico → é true se uma ou ambas forem verdadeiras.
-
-dart
-Copiar
-Editar
-if (idade > 18 && temCarteira) { ... }
-if (nome == 'Ana' || nome == 'João') { ... }
-• Qual a diferença entre usar if-else e expressões condicionais?
-if-else é uma estrutura de controle.
-
-Expressão condicional (ternário ? :) é mais curta, mas só para casos simples.
-
-dart
-Copiar
-Editar
-// if-else
-if (idade >= 18) {
-  print('Adulto');
-} else {
-  print('Menor');
+```dart
+if (variavel is String) {
+  print('É uma string');
 }
+```
 
-// ternário
-print(idade >= 18 ? 'Adulto' : 'Menor');
-• Em quais situações a notação em cascata (..) pode tornar o código mais legível?
-Quando você quer encadear várias operações no mesmo objeto sem reescrevê-lo:
+---
 
-dart
-Copiar
-Editar
-var buffer = StringBuffer()
-  ..write('Olá')
-  ..write(' Mundo')
-  ..write('!');
-• Qual a diferença entre usar a notação em cascata e chamar métodos separadamente?
-Sem cascata:
+## Qual a função do operador `?` em testes de tipo?
 
-dart
-Copiar
-Editar
-var pessoa = Pessoa();
-pessoa.setNome('Ana');
-pessoa.setIdade(25);
-Com cascata:
+Indica que o valor pode ser `null`. Exemplo:
 
-dart
-Copiar
-Editar
-var pessoa = Pessoa()
-  ..setNome('Ana')
-  ..setIdade(25);
-Mais compacto e fácil de ler.
+```dart
+String? nome; // Pode conter null
+```
 
-• Como a notação em cascata pode ser usada para modificar um objeto após realizar testes de tipo?
-dart
-Copiar
-Editar
-void configurar(obj) {
-  if (obj is Pessoa) {
-    obj
-      ..setNome('Carlos')
-      ..setIdade(30);
-  }
+Também é usado com `?.` para chamadas seguras:
+
+```dart
+objeto?.metodo();
+```
+
+---
+
+## Quando usar os operadores de valores opcionais e valores requeridos em uma função Dart?
+
+- `[]`: parâmetros posicionais opcionais  
+- `{}` com `required`: parâmetros nomeados obrigatórios  
+- `{}` com valor padrão: parâmetros nomeados opcionais
+
+---
+
+## Quais são os operadores de atribuição compostos e como eles funcionam?
+
+- `+=`, `-=`, `*=`, `/=`, `~/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, `>>=`  
+Eles combinam uma operação com uma atribuição. Exemplo:
+
+```dart
+int a = 5;
+a += 3; // Equivale a: a = a + 3;
+```
+
+---
+
+## Como uso os operadores `&&` e `||` para combinar condições?
+
+- `&&`: E lógico (ambas as condições devem ser verdadeiras)
+- `||`: OU lógico (basta uma condição ser verdadeira)
+
+```dart
+if (a > 0 && b < 10) { ... }
+if (nome == '' || nome == null) { ... }
+```
+
+---
+
+## Qual a diferença entre usar `if-else` e expressões condicionais?
+
+- `if-else`: estrutura tradicional, usada para múltiplas instruções
+- Expressões condicionais (`condição ? true : false`): para atribuições rápidas ou retorno simples
+
+```dart
+var resultado = idade >= 18 ? 'Maior' : 'Menor';
+```
+
+---
+
+## Em quais situações a notação em cascata pode tornar o código mais legível?
+
+Quando você deseja aplicar várias operações em sequência no mesmo objeto sem precisar reatribuir ou reescrever o nome do objeto a cada linha.
+
+---
+
+## Qual a diferença entre usar a notação em cascata e chamar métodos separadamente?
+
+- **Separadamente**:
+
+```dart
+obj.setX(10);
+obj.setY(20);
+```
+
+- **Com cascata (`..`)**:
+
+```dart
+obj
+  ..setX(10)
+  ..setY(20);
+```
+
+Cascata evita repetição do nome do objeto.
+
+---
+
+## Como a notação em cascata pode ser usada para modificar um objeto após realizar testes de tipo?
+
+```dart
+if (objeto is Pessoa) {
+  (objeto as Pessoa)
+    ..nome = 'João'
+    ..idade = 30;
 }
-• Traga a documentação dos operadores
-A documentação oficial está aqui (recomendo muito a leitura!): 📚 https://dart.dev/language/operators
+```
 
-• Traga exemplos de mau uso do ternário
-Mau uso:
+---
 
-dart
-Copiar
-Editar
-print(condicao ? outraCondicao ? 'A' : 'B' : 'C'); // difícil de ler
-Melhor usar if-else:
+## Traga a documentação dos operadores
 
-dart
-Copiar
-Editar
-if (condicao) {
-  if (outraCondicao) {
-    print('A');
-  } else {
-    print('B');
-  }
-} else {
-  print('C');
-}
-• Como evitar problemas com operadores lógicos?
-Sempre valide null antes de usar atributos:
+Disponível em:  
+[Dart Operators - Language Tour](https://dart.dev/language/operators)  
+[Atribuições e operadores compostos](https://dart.dev/language/assignment-operators)  
 
-dart
-Copiar
-Editar
-if (usuario != null && usuario.ativo) { ... }
-Use ?? para valores padrão:
+---
 
-dart
-Copiar
-Editar
-var nome = entrada ?? 'Visitante';
-Use parênteses para clareza:
+## Traga exemplos de mau uso do ternário
 
-dart
-Copiar
-Editar
-if ((x > 0 && y > 0) || z > 10) { ... }
+- Ternário aninhado dificulta a leitura:
+
+```dart
+var resultado = cond1 ? 'A' : cond2 ? 'B' : cond3 ? 'C' : 'D'; // Confuso
+```
+
+- Usar ternário para executar funções com efeitos colaterais:
+
+```dart
+condicao ? executar1() : executar2(); // Difícil de manter
+```
+
+---
+
+## Como evitar problemas com operadores lógicos
+
+- Sempre verifique se variáveis podem ser `null` antes de acessar propriedades
+- Use `()` para controlar a ordem das condições
+- Evite expressões muito longas em uma única linha
