@@ -39,15 +39,20 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         backgroundColor: Colors.blueGrey, //Cor de fundo do Scaffold
         appBar: AppBar(title: Text('Quadrados empilhados')), //Título da AppBar
-        body: Column(
-          //Coluna para organizar os widgets verticalmente
-          children: List.generate(blocoMenores.length, (index) {
-            //Gera widgets dinamicamente baseado na lista blocoMenores
-            return retanguloComBlocos(
-              fundo: blocoMaiores[index], //Cor de fundo do bloco maior
-              cor: blocoMenores[index], //Cores dos blocos menores
-            );
-          }),
+        body: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              //Coluna para organizar os widgets verticalmente
+              children: List.generate(blocoMenores.length, (index) {
+                //Gera widgets dinamicamente baseado na lista blocoMenores
+                return retanguloComBlocos(
+                  fundo: blocoMaiores[index], //Cor de fundo do bloco maior
+                  cor: blocoMenores[index], //Cores dos blocos menores
+                );
+              }),
+            ),
+          ),
         ),
       ),
     );
