@@ -18,6 +18,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(title: Text('Retângulos coloridos')), //Título da AppBar
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           //Coloca os widgets um abaixo do outro
           children: [
             //Chamando os widgets
